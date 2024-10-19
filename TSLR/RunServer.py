@@ -2,6 +2,7 @@
 # spark-submit --master spark://hadoop.Master:7077 runMyModel.py
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import concat_ws
@@ -9,6 +10,15 @@ from pyspark.ml import PipelineModel
 import threading
 
 app = FastAPI()
+
+# 配置 CORS 中间件
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 允许所有来源（也可以指定具体的域名列表）
+    allow_credentials=True,
+    allow_methods=["*"],  # 允许所有方法（GET, POST, OPTIONS等）
+    allow_headers=["*"],  # 允许所有请求头
+)
 
 # 创建 SparkSession
 spark = SparkSession.builder.appName("WiC_TextPrediction").getOrCreate()
@@ -42,4 +52,3 @@ def run():
 thread = threading.Thread(target=run)
 thread.start()
 
-# 在此处可以添加其他 Spark 任务
