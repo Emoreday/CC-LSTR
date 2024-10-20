@@ -1,5 +1,7 @@
 # 2024 年秋 GDUT 云计算大作业 CC-LSTR
 
+⭐如果这对你有帮助，请留下一个 star⭐
+
 ## 项目概述
 
 CC-LSTR（Cloud Computer - Text Relevance Logistic Classifier）是使用 Apache Hadoop + Apache Spark 基于线性回归模型完成对语言关联度二分类分析。训练集采用 WIC ，精度约为53%，作为二分类模型力压OPT-6.7b三个百分点，并且运行速度不在一个量级，故某种意义上还挺成功的。
