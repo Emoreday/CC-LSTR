@@ -23,7 +23,7 @@ app.add_middleware(
 # 创建 SparkSession
 spark = SparkSession.builder.appName("WiC_TextPrediction").getOrCreate()
 
-# 加载训练好的模型
+# 加载训练好的模型（HDFS 路径）
 model_path = "/model/wic-model"
 model = PipelineModel.load(model_path)
 
